@@ -1,7 +1,8 @@
 /*
- * Copyright 2010-2013 Ning, Inc.
+ * Copyright 2010-2014 Ning, Inc.
+ * Copyright 2014-2015 The Billing Project, LLC
  *
- * Ning licenses this file to you under the Apache License, version 2.0
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
  * License.  You may obtain a copy of the License at:
  *
@@ -127,7 +128,7 @@ public class RecurlyClient {
     private final String key;
     private final String baseUrl;
     private AsyncHttpClient client;
-    
+
     public RecurlyClient(final String apiKey) {
         this(apiKey, "api");
     }
@@ -161,7 +162,7 @@ public class RecurlyClient {
 
     /**
      * Create Account
-     * <p/>
+     * <p>
      * Creates a new account. You may optionally include billing information.
      *
      * @param account account object
@@ -173,7 +174,7 @@ public class RecurlyClient {
 
     /**
      * Get Accounts
-     * <p/>
+     * <p>
      * Returns information about all accounts.
      *
      * @return account object on success, null otherwise
@@ -188,7 +189,7 @@ public class RecurlyClient {
 
     /**
      * Get Account
-     * <p/>
+     * <p>
      * Returns information about a single account.
      *
      * @param accountCode recurly account id
@@ -200,7 +201,7 @@ public class RecurlyClient {
 
     /**
      * Update Account
-     * <p/>
+     * <p>
      * Updates an existing account.
      *
      * @param accountCode recurly account id
@@ -213,7 +214,7 @@ public class RecurlyClient {
 
     /**
      * Close Account
-     * <p/>
+     * <p>
      * Marks an account as closed and cancels any active subscriptions. Any saved billing information will also be
      * permanently removed from the account.
      *
@@ -264,7 +265,7 @@ public class RecurlyClient {
 
     /**
      * Create a subscription
-     * <p/>
+     * <p>
      * Creates a subscription for an account.
      *
      * @param subscription Subscription object
@@ -277,7 +278,7 @@ public class RecurlyClient {
 
     /**
      * Preview a subscription
-     * <p/>
+     * <p>
      * Previews a subscription for an account.
      *
      * @param subscription Subscription object
@@ -291,7 +292,7 @@ public class RecurlyClient {
 
     /**
      * Get a particular {@link Subscription} by it's UUID
-     * <p/>
+     * <p>
      * Returns information about a single subscription.
      *
      * @param uuid UUID of the subscription to lookup
@@ -305,7 +306,7 @@ public class RecurlyClient {
 
     /**
      * Cancel a subscription
-     * <p/>
+     * <p>
      * Cancel a subscription so it remains active and then expires at the end of the current bill cycle.
      *
      * @param subscription Subscription object
@@ -318,7 +319,7 @@ public class RecurlyClient {
 
     /**
      * Postpone a subscription
-     * <p/>
+     * <p>
      * postpone a subscription, setting a new renewal date.
      *
      * @param subscription Subscription object
@@ -341,7 +342,7 @@ public class RecurlyClient {
 
     /**
      * Reactivating a canceled subscription
-     * <p/>
+     * <p>
      * Reactivate a canceled subscription so it renews at the end of the current bill cycle.
      *
      * @param subscription Subscription object
@@ -354,7 +355,7 @@ public class RecurlyClient {
 
     /**
      * Update a particular {@link Subscription} by it's UUID
-     * <p/>
+     * <p>
      * Returns information about a single subscription.
      *
      * @param uuid               UUID of the subscription to update
@@ -370,7 +371,7 @@ public class RecurlyClient {
 
     /**
      * Preview an update to a particular {@link Subscription} by it's UUID
-     * <p/>
+     * <p>
      * Returns information about a single subscription.
      *
      * @param uuid UUID of the subscription to preview an update for
@@ -382,16 +383,16 @@ public class RecurlyClient {
                       subscriptionUpdate,
                       Subscription.class);
     }
-    
-    
+
+
     /**
      * Update to a particular {@link Subscription}'s notes by it's UUID
-     * <p/>
+     * <p>
      * Returns information about a single subscription.
      *
      * @param uuid UUID of the subscription to preview an update for
      * @param subscriptionNotes SubscriptionNotes object
-     * @return Subscription the updated subscription 
+     * @return Subscription the updated subscription
      */
     public Subscription updateSubscriptionNotes(final String uuid, final SubscriptionNotes subscriptionNotes) {
       return doPUT(SubscriptionNotes.SUBSCRIPTION_RESOURCE + "/" + uuid + "/notes",
@@ -400,7 +401,7 @@ public class RecurlyClient {
 
     /**
      * Get the subscriptions for an {@link Account}.
-     * <p/>
+     * <p>
      * Returns information about a single {@link Account}.
      *
      * @param accountCode recurly account id
@@ -415,7 +416,7 @@ public class RecurlyClient {
 
     /**
      * Get the subscriptions for an account.
-     * <p/>
+     * <p>
      * Returns information about a single account.
      *
      * @param accountCode recurly account id
@@ -435,14 +436,14 @@ public class RecurlyClient {
 
     /**
      * Update an account's billing info
-     * <p/>
+     * <p>
      * When new or updated credit card information is updated, the billing information is only saved if the credit card
      * is valid. If the account has a past due invoice, the outstanding balance will be collected to validate the
      * billing information.
-     * <p/>
+     * <p>
      * If the account does not exist before the API request, the account will be created if the billing information
      * is valid.
-     * <p/>
+     * <p>
      * Please note: this API end-point may be used to import billing information without security codes (CVV).
      * Recurly recommends requiring CVV from your customers when collecting new or updated billing information.
      *
@@ -459,7 +460,7 @@ public class RecurlyClient {
 
     /**
      * Lookup an account's billing info
-     * <p/>
+     * <p>
      * Returns only the account's current billing information.
      *
      * @param accountCode recurly account id
@@ -472,7 +473,7 @@ public class RecurlyClient {
 
     /**
      * Clear an account's billing info
-     * <p/>
+     * <p>
      * You may remove any stored billing information for an account. If the account has a subscription, the renewal will
      * go into past due unless you update the billing info before the renewal occurs
      *
@@ -487,7 +488,7 @@ public class RecurlyClient {
 
     /**
      * Lookup an account's transactions history
-     * <p/>
+     * <p>
      * Returns the account's transaction history
      *
      * @param accountCode recurly account id
@@ -535,10 +536,10 @@ public class RecurlyClient {
 
     ///////////////////////////////////////////////////////////////////////////
     // User invoices
-    
+
     /**
      * Lookup an invoice
-     * <p/>
+     * <p>
      * Returns the invoice
      *
      * @param invoiceId Recurly Invoice ID
@@ -546,11 +547,11 @@ public class RecurlyClient {
      */
     public Invoice getInvoice(final Integer invoiceId) {
         return doGET(Invoices.INVOICES_RESOURCE + "/" + invoiceId, Invoice.class);
-    }    
+    }
 
     /**
      * Lookup an account's invoices
-     * <p/>
+     * <p>
      * Returns the account's invoices
      *
      * @param accountCode recurly account id
@@ -563,7 +564,7 @@ public class RecurlyClient {
 
     /**
      * Post an invoice: invoice pending charges on an account
-     * <p/>
+     * <p>
      * Returns an invoice
      *
      * @param accountCode
@@ -605,7 +606,7 @@ public class RecurlyClient {
 
     /**
      * Create a Plan's info
-     * <p/>
+     * <p>
      *
      * @param plan The plan to create on recurly
      * @return the plan object as identified by the passed in ID
@@ -616,7 +617,7 @@ public class RecurlyClient {
 
     /**
      * Get a Plan's details
-     * <p/>
+     * <p>
      *
      * @param planCode recurly id of plan
      * @return the plan object as identified by the passed in ID
@@ -627,7 +628,7 @@ public class RecurlyClient {
 
     /**
      * Return all the plans
-     * <p/>
+     * <p>
      *
      * @return the plan object as identified by the passed in ID
      */
@@ -637,7 +638,7 @@ public class RecurlyClient {
 
     /**
      * Deletes a {@link Plan}
-     * <p/>
+     * <p>
      *
      * @param planCode The {@link Plan} object to delete.
      */
@@ -651,7 +652,7 @@ public class RecurlyClient {
 
     /**
      * Create an AddOn to a Plan
-     * <p/>
+     * <p>
      *
      * @param planCode The planCode of the {@link Plan } to create within recurly
      * @param addOn    The {@link AddOn} to create within recurly
@@ -667,7 +668,7 @@ public class RecurlyClient {
 
     /**
      * Get an AddOn's details
-     * <p/>
+     * <p>
      *
      * @param addOnCode recurly id of {@link AddOn}
      * @param planCode  recurly id of {@link Plan}
@@ -684,7 +685,7 @@ public class RecurlyClient {
 
     /**
      * Return all the {@link AddOn} for a {@link Plan}
-     * <p/>
+     * <p>
      *
      * @return the {@link AddOn} objects as identified by the passed plan ID
      */
@@ -697,7 +698,7 @@ public class RecurlyClient {
 
     /**
      * Deletes a {@link AddOn} for a Plan
-     * <p/>
+     * <p>
      *
      * @param planCode  The {@link Plan} object.
      * @param addOnCode The {@link AddOn} object to delete.
@@ -715,7 +716,7 @@ public class RecurlyClient {
 
     /**
      * Create a {@link Coupon}
-     * <p/>
+     * <p>
      *
      * @param coupon The coupon to create on recurly
      * @return the {@link Coupon} object
@@ -726,7 +727,7 @@ public class RecurlyClient {
 
     /**
      * Get a Coupon
-     * <p/>
+     * <p>
      *
      * @param couponCode The code for the {@link Coupon}
      * @return The {@link Coupon} object as identified by the passed in code
@@ -737,7 +738,7 @@ public class RecurlyClient {
 
     /**
      * Delete a {@link Coupon}
-     * <p/>
+     * <p>
      *
      * @param couponCode The code for the {@link Coupon}
      */
@@ -797,7 +798,7 @@ public class RecurlyClient {
 
     /**
      * Fetch Subscription
-     * <p/>
+     * <p>
      * Returns subscription from a recurly.js token.
      *
      * @param recurlyToken token given by recurly.js
@@ -809,7 +810,7 @@ public class RecurlyClient {
 
     /**
      * Fetch BillingInfo
-     * <p/>
+     * <p>
      * Returns billing info from a recurly.js token.
      *
      * @param recurlyToken token given by recurly.js
@@ -821,7 +822,7 @@ public class RecurlyClient {
 
     /**
      * Fetch Invoice
-     * <p/>
+     * <p>
      * Returns invoice from a recurly.js token.
      *
      * @param recurlyToken token given by recurly.js
@@ -950,7 +951,7 @@ public class RecurlyClient {
                     try {
                         errors = xmlMapper.readValue(payload, Errors.class);
                     } catch (Exception e) {
-                        // 422 is returned for transaction errors (see http://docs.recurly.com/api/transactions/error-codes)
+                        // 422 is returned for transaction errors (see https://recurly.readme.io/v2.0/page/transaction-errors)
                         // as well as bad input payloads
                         log.debug("Unable to extract error", e);
                         return null;

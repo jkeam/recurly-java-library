@@ -1,5 +1,6 @@
-recurly-java-library
+recurly-java-library [![Build Status](https://travis-ci.org/killbilling/recurly-java-library.svg)](https://travis-ci.org/killbilling/recurly-java-library)
 ====================
+
 
 Java library for Recurly, originally developed for [Kill Bill](http://killbill.io), an open-source subscription management and billing system.
 
@@ -56,7 +57,7 @@ If you wish to specify extra parameters (such as account id and subscription cod
     extraParams.add(String.format("%s=%s", "account%5Baccount_code%5D", "123abc"));
 	String signature = RecurlyJs.getRecurlySignature(String jsPrivateKey, extraParams);
 
-Refer to the [Recurly.js Signature Generation documentation](http://docs.recurly.com/api/recurlyjs/signatures) for more information on the format for building parameters.
+Refer to the [Recurly.js Signature Generation documentation](https://docs.recurly.com/deprecated-api-docs/recurlyjs/signatures) for more information on the format for building parameters.
 
 
 Build

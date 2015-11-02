@@ -1,7 +1,8 @@
 /*
- * Copyright 2010-2013 Ning, Inc.
+ * Copyright 2010-2014 Ning, Inc.
+ * Copyright 2014-2015 The Billing Project, LLC
  *
- * Ning licenses this file to you under the Apache License, version 2.0
+ * The Billing Project licenses this file to you under the Apache License, version 2.0
  * (the "License"); you may not use this file except in compliance with the
  * License.  You may obtain a copy of the License at:
  *
@@ -19,9 +20,9 @@ package com.ning.billing.recurly.model.push.payment;
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement(name = "void_payment_notification")
-public class VoidedPaymentNotification extends PaymentNotification {
+public class VoidPaymentNotification extends PaymentNotification {
 
-    public static VoidedPaymentNotification read(final String payload) {
-        return read(payload, VoidedPaymentNotification.class);
+    public static VoidPaymentNotification read(final String payload) {
+        return read(payload, VoidPaymentNotification.class);
     }
 }
